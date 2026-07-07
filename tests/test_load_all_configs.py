@@ -2,6 +2,7 @@ from pathlib import Path
 
 from info_sales_mysql_api.utils.load_yaml.loader_yaml import load_all_configs
 
+
 def test_load_all_configs_retorna_dicionario():
     """
     Verifica se a função retorna um dicionário
@@ -29,10 +30,11 @@ def test_load_all_configs_retorna_dicionario():
 
     # Verifica se a configuração "logging.yaml"
     # foi carregada para o dicionário
-    assert resultado["logging"]["logging"]["format"] == "%(asctime)s - %(levelname)s - %(name)s - %(message)s"
+    assert (
+        resultado["logging"]["logging"]["format"]
+        == "%(asctime)s - %(levelname)s - %(name)s - %(message)s"
+    )
 
     # Verifica se a configuração "paths.yaml"
     # foi carregada para o dicionário
     assert resultado["paths"]["logs"]["file"] == "logs/app.log"
-
-
