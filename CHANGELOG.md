@@ -1,0 +1,23 @@
+# Changelog
+
+## 0.1.0 (2026-07-07)
+
+
+### Features
+
+* Arquivo logging yaml adicionado ([7cf2456](https://github.com/jcarlossc/info-sales-mysql-api/commit/7cf24567730bfa37f12e7af57330f657ee0ddd18))
+* Arquivo paths yaml adicionado ([a2c36bf](https://github.com/jcarlossc/info-sales-mysql-api/commit/a2c36bfff6351375e03b0dcc687ee7620e8e1f96))
+* biblioteca pyyaml adicionada ([c07ea64](https://github.com/jcarlossc/info-sales-mysql-api/commit/c07ea642fd528405baf66929fec81e5e67485b88))
+* Capituradores de erro de load_all_config adicionadao ([4338933](https://github.com/jcarlossc/info-sales-mysql-api/commit/4338933c273ab896cef585b45319ddb4e5d775d2))
+* Função load_all_config adicionada ([86bf58c](https://github.com/jcarlossc/info-sales-mysql-api/commit/86bf58c1e0f37c994014c4c5106cef4e04210f8c))
+* Script main adicionado ([e302bf8](https://github.com/jcarlossc/info-sales-mysql-api/commit/e302bf811283f15481aee8387ce68e079e862824))
+* Script main adicionado ([2f4287a](https://github.com/jcarlossc/info-sales-mysql-api/commit/2f4287a44dae78e79a97bf9f25887eaf3e43cda5))
+* Testando release-please ([3e5cd2e](https://github.com/jcarlossc/info-sales-mysql-api/commit/3e5cd2e1a209ebbf2ba4f82d3842cf5263799f84))
+* Testando release-please ([cc1c521](https://github.com/jcarlossc/info-sales-mysql-api/commit/cc1c521ed0d157fce5f17320b138fd155985d32d))
+* Validações de load_all_config adicionadas ([b65e9eb](https://github.com/jcarlossc/info-sales-mysql-api/commit/b65e9eb6f2d7bcfdd223ce085fe130497d220fac))
+
+
+### Documentation
+
+* Comentários de load_all_config adicionados ([a4fbae3](https://github.com/jcarlossc/info-sales-mysql-api/commit/a4fbae3b345d281268631e3c3f1d7137b4cbb4ce))
+* Docstring de load_all_config adicionado ([ca88980](https://github.com/jcarlossc/info-sales-mysql-api/commit/ca88980084674257d04abe5feafb60e77f8a775a))
