@@ -1,5 +1,5 @@
 def main() -> None:
-    print("TESTANDO")
+    print("TESTANDO INFO_SALES_MYSQL_API")
 
 
 if __name__ == "__main__":
