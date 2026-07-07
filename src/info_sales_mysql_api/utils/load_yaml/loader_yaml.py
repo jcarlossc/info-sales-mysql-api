@@ -1,6 +1,7 @@
 import yaml
 from pathlib import Path
-from typing import Dict, Any                                          
+from typing import Dict, Any
+
 
 def load_all_configs(config_path: Path) -> Dict[str, Any]:
     """
@@ -56,26 +57,21 @@ def load_all_configs(config_path: Path) -> Dict[str, Any]:
         # Percorre todos os arquivos com extensão .yaml dentro
         # do diretório informado.
         for file in config_path.glob("*.yaml"):
-
             # Abre o arquivo YAML em modo leitura utilizando
             # codificação UTF-8 para garantir compatibilidade
             # com caracteres especiais.
             with open(file, "r", encoding="utf-8") as f:
-
                 # Carrega o conteúdo YAML de forma segura utilizando
                 # yaml.safe_load, que evita execução de código arbitrário.
                 configs[file.stem] = yaml.safe_load(f)
 
         # Retorna o dicionário contendo todas as configurações carregadas.
         return configs
-    
+
     except yaml.YAMLError as error:
-        raise ValueError(
-            f"YAML_ERROR: erro ao processar YAML -> {error}"
-        ) from error
+        raise ValueError(f"YAML_ERROR: erro ao processar YAML -> {error}") from error
 
     except OSError as error:
         raise OSError(
             f"FILE_ERROR: falha ao acessar arquivos em {config_path}"
         ) from error
-
