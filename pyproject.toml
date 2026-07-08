@@ -35,3 +35,14 @@ dev = [
     "types-pyyaml (>=6.0.12.20260518,<7.0.0.0)",
     "pre-commit (>=4.6.0,<5.0.0)"
 ]
+
+[tool.taskipy.tasks]
+run_app = "poetry run info_sales"
+run_pytest = "poetry run pytest ."
+run_covhtml = "poetry run pytest --cov=test_senior --cov-report=html"
+run_covcmd = "poetry run pytest --cov=test_senior --cov-report=term-missing"
+run_format = "poetry run ruff format ."
+run_lint = "ruff check ."
+run_mypy = "poetry run mypy ."
+run_check = "poetry run ruff format --check ."
+run_precommit = "poetry run pre-commit run --all-files"
