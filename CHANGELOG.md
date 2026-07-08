@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.2.0](https://github.com/jcarlossc/info-sales-mysql-api/compare/v0.1.0...v0.2.0) (2026-07-08)
+
+
+### Features
+
+* Sistema de logs adicionado ([2c8c590](https://github.com/jcarlossc/info-sales-mysql-api/commit/2c8c59001a9c74a9eed246bf58444685d9fe802b))
+* Sistema de logs adicionado ([36cc29b](https://github.com/jcarlossc/info-sales-mysql-api/commit/36cc29bf71a9db717387a15ec7f41c1dadabb54b))
+
 ## 0.1.0 (2026-07-07)
 
 
