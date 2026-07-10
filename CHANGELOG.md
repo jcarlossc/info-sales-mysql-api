@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.3.0](https://github.com/jcarlossc/info-sales-mysql-api/compare/v0.2.0...v0.3.0) (2026-07-10)
+
+
+### Features
+
+* Pipeline criado ([f6d6e23](https://github.com/jcarlossc/info-sales-mysql-api/commit/f6d6e239287e135fcfb1e20b75625fae1ef675f2))
+* Pipeline criado ([e06409c](https://github.com/jcarlossc/info-sales-mysql-api/commit/e06409c0f60e01761673f90e89a207bfcc6f3969))
+
 ## [0.2.0](https://github.com/jcarlossc/info-sales-mysql-api/compare/v0.1.0...v0.2.0) (2026-07-08)
 
 
