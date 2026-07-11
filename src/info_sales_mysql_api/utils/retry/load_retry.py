@@ -7,6 +7,29 @@ def retry_connect(
     max_attempts: int = 3,
     delay: float = 1.0,
 ) -> Any:
+    """
+    Tenta executar uma função de conexão várias vezes.
+
+    Parameters
+    ----------
+    connect : Callable
+        Função responsável por criar a conexão.
+    max_attempts : int, optional
+        Número máximo de tentativas.
+    delay : float, optional
+        Tempo de espera entre as tentativas, em segundos.
+
+    Returns
+    -------
+    Any
+        Objeto retornado pela função de conexão.
+
+    Raises
+    ------
+    Exception
+        Relança a última exceção caso todas as tentativas falhem.
+    """
+
     # Executa a quantidade máxima de tentativas.
     for attempt in range(max_attempts):
         try:
