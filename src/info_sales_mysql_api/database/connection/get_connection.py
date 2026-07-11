@@ -2,6 +2,7 @@ from typing import Dict, Any
 import logging
 from sqlalchemy import create_engine
 from sqlalchemy.engine import Engine
+from sqlalchemy.exc import SQLAlchemyError
 from info_sales_mysql_api.utils.config_env.Settings import Settings
 
 
@@ -12,17 +13,28 @@ def get_engine(config: Dict[str, Any]) -> Engine:
 
     logger.info("Iniciando criação da engine.")
 
-    conn = (
-        f"mysql+pymysql://"
-        f"{settings.mysql_user}:"
-        f"{settings.mysql_password}@"
-        f"{settings.mysql_host}:"
-        f"{settings.mysql_port}/"
-        f"{settings.mysql_database}"
-    )
+    try:
+        conn = (
+            f"mysql+pymysql://"
+            f"{settings.mysql_user}:"
+            f"{settings.mysql_password}@"
+            f"{settings.mysql_host}:"
+            f"{settings.mysql_port}/"
+            f"{settings.mysql_database}"
+        )
 
-    engine = create_engine(conn)
+        engine = create_engine(conn)
 
-    logger.info("Engine criada com sucesso.")
+        logger.info("Engine criada com sucesso.")
 
-    return engine
+        return engine
+
+    except KeyError as error:
+        logger.warning(f"Parâmetro obrigatório ausente: {error}")
+
+        raise KeyError(f"Parâmetro obrigatório ausente: {error}") from error
+
+    except SQLAlchemyError as error:
+        logger.error(f"Erro ao criar engine: {error}")
+
+        raise
