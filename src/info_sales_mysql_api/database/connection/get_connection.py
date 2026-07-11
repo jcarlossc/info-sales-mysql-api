@@ -14,6 +14,8 @@ def get_engine(config: Dict[str, Any]) -> Engine:
     logger.info("Iniciando criação da engine.")
 
     try:
+        # Monta string de conexão utilizada
+        # pelo SQLAlchemy para acessar MySQL.
         conn = (
             f"mysql+pymysql://"
             f"{settings.mysql_user}:"
@@ -22,7 +24,7 @@ def get_engine(config: Dict[str, Any]) -> Engine:
             f"{settings.mysql_port}/"
             f"{settings.mysql_database}"
         )
-
+        # Cria instância Engine responsável
         engine = create_engine(conn)
 
         logger.info("Engine criada com sucesso.")
