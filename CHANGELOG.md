@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.4.0](https://github.com/jcarlossc/info-sales-mysql-api/compare/v0.3.0...v0.4.0) (2026-07-11)
+
+
+### Features
+
+* Arquivo retry adicionado ([18f3595](https://github.com/jcarlossc/info-sales-mysql-api/commit/18f359557d1d6f9645d75284ba9284ceccfe8a6d))
+
+
+### Documentation
+
+* Comentários adicionado ([2412e59](https://github.com/jcarlossc/info-sales-mysql-api/commit/2412e59b74236717b25b65b68eec981686f831e4))
+* Docstring adicionado ([50169d4](https://github.com/jcarlossc/info-sales-mysql-api/commit/50169d432b9aabca16316ca0c61367e4cc759acf))
+
 ## [0.3.0](https://github.com/jcarlossc/info-sales-mysql-api/compare/v0.2.0...v0.3.0) (2026-07-10)
 
 
