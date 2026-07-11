@@ -2,6 +2,13 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 class Settings(BaseSettings):
+    """
+    Representa as configurações da aplicação.
+
+    Todos os atributos são carregados automaticamente do
+    arquivo .env.
+    """
+
     # Endereço do servidor MySQL.
     mysql_host: str
 
