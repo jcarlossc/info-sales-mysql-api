@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.6.1](https://github.com/jcarlossc/info-sales-mysql-api/compare/v0.6.0...v0.6.1) (2026-07-13)
+
+
+### Bug Fixes
+
+* load-sales modificado ([0ec2cab](https://github.com/jcarlossc/info-sales-mysql-api/commit/0ec2cabdb633fb715e1366041a86f7eaf42876b5))
+* load-sales modificado ([771d73b](https://github.com/jcarlossc/info-sales-mysql-api/commit/771d73bb6f78a389a3d033ec69bb6feaee2c4876))
+
 ## [0.6.0](https://github.com/jcarlossc/info-sales-mysql-api/compare/v0.5.2...v0.6.0) (2026-07-13)
 
 
