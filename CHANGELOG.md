@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.5.1](https://github.com/jcarlossc/info-sales-mysql-api/compare/v0.5.0...v0.5.1) (2026-07-13)
+
+
+### Bug Fixes
+
+* env-example modificado ([0955d0c](https://github.com/jcarlossc/info-sales-mysql-api/commit/0955d0cb4d5db8fdd2210e2100672d504a38cce5))
+* env-example modificado ([111309d](https://github.com/jcarlossc/info-sales-mysql-api/commit/111309df5ff0610a86e178e22cda80524ccd4af8))
+
 ## [0.5.0](https://github.com/jcarlossc/info-sales-mysql-api/compare/v0.4.0...v0.5.0) (2026-07-11)
 
 
