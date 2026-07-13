@@ -5,6 +5,34 @@ from sqlalchemy.exc import SQLAlchemyError
 
 
 def get_load_sales(engine: Engine) -> pd.DataFrame:
+    """
+    Carrega dados consolidados de vendas
+    a partir do banco de dados.
+
+    A consulta realiza junção entre tabelas
+    de vendas, produtos e vendedores para
+    construção da base analítica.
+
+    Parameters
+    ----------
+    engine : Engine
+        Instância SQLAlchemy Engine utilizada
+        para comunicação com banco.
+
+    Returns
+    -------
+    pd.DataFrame
+        DataFrame contendo dados de vendas.
+
+    Raises
+    ------
+    SQLAlchemyError
+        Quando ocorre falha na consulta SQL.
+
+    ValueError
+        Quando o resultado retornado está vazio.
+    """
+
     # Recupera logger do módulo atual para
     # rastreamento do fluxo de execução.
     logger = logging.getLogger(__name__)
