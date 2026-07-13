@@ -1,7 +1,7 @@
 import logging
 import pandas as pd
 from sqlalchemy.engine import Engine
-# from sqlalchemy.exc import SQLAlchemyError
+from sqlalchemy.exc import SQLAlchemyError
 
 
 def get_load_sales(engine: Engine) -> pd.DataFrame:
@@ -39,6 +39,15 @@ def get_load_sales(engine: Engine) -> pd.DataFrame:
         ON v.vendedor_id = vd.vendedor_id;
     """
 
-    df = pd.read_sql(query, engine)
+    try:
+        df = pd.read_sql(query, engine)
 
-    return df
+        return df
+
+    except SQLAlchemyError as error:
+        logger.error(f"Erro ao executar consulta SQL: {error}")
+        raise
+
+    except Exception as error:
+        logger.exception(f"Erro inesperado ao carregar vendas: {error}")
+        raise
