@@ -5,12 +5,16 @@ import logging
 
 from info_sales_mysql_api.utils.loggers.logger import setup_logger
 from info_sales_mysql_api.utils.load_yaml.loader_yaml import load_all_configs
+from info_sales_mysql_api.database.connection.get_connection import get_engine
+from info_sales_mysql_api.utils.config_env.Settings import Settings
 
 
 def run_pipeline() -> None:
     logger = logging.getLogger(__name__)
 
-    # conn = None
+    settings = Settings()
+
+    conn = None
 
     logger.info("Carregando arquivos de configutação.")
 
@@ -23,3 +27,11 @@ def run_pipeline() -> None:
     setup_logger(configs["logging"], configs["paths"]["logs"]["file"])
 
     logger.info("### Iniciando pipeline de vendas. ###")
+
+    logger.info("Criando conexão com banco.")
+
+    conn = get_engine(settings)
+
+    print(conn)
+
+    conn.dispose()
