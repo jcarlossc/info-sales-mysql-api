@@ -47,8 +47,10 @@ def get_load_sales(engine: Engine) -> pd.DataFrame:
     v.venda_id,
     v.data_venda,
     v.quantidade,
-    v.valor_compra,
-    v.valor_venda,
+
+    p.valor_compra,
+    p.valor_venda,
+
     v.forma_pagamento,
     v.desconto,
     v.cidade,
@@ -62,13 +64,13 @@ def get_load_sales(engine: Engine) -> pd.DataFrame:
     vd.vendedor_id,
     vd.nome_vendedor
 
-    FROM vendas AS v
+FROM vendas AS v
 
-    INNER JOIN produtos AS p
-        ON v.produto_id = p.produto_id
+INNER JOIN produtos AS p
+    ON v.produto_id = p.produto_id
 
-    INNER JOIN vendedor AS vd
-        ON v.vendedor_id = vd.vendedor_id;
+INNER JOIN vendedores AS vd
+    ON v.vendedor_id = vd.vendedor_id;
     """
 
     try:
