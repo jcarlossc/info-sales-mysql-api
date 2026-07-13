@@ -42,6 +42,13 @@ def get_load_sales(engine: Engine) -> pd.DataFrame:
     try:
         df = pd.read_sql(query, engine)
 
+        if df.empty:
+            logger.warning("Consulta retornou dataset vazio.")
+
+            raise ValueError("Nenhum registro encontrado.")
+
+        logger.info(f"{len(df)} registros carregados.")
+
         return df
 
     except SQLAlchemyError as error:
