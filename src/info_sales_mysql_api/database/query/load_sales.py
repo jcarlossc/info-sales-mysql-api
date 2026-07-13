@@ -5,10 +5,14 @@ from sqlalchemy.exc import SQLAlchemyError
 
 
 def get_load_sales(engine: Engine) -> pd.DataFrame:
+    # Recupera logger do módulo atual para
+    # rastreamento do fluxo de execução.
     logger = logging.getLogger(__name__)
 
     logger.info("Iniciando carregamento dos dados de vendas.")
 
+    # Consulta utilizada para consolidar
+    # informações de vendas, produtos e vendedores.
     query = """
 
     SELECT
@@ -40,8 +44,12 @@ def get_load_sales(engine: Engine) -> pd.DataFrame:
     """
 
     try:
+        # Executa consulta SQL e converte
+        # resultado para DataFrame Pandas.
         df = pd.read_sql(query, engine)
 
+        # Evita continuar pipeline
+        # com base vazia.
         if df.empty:
             logger.warning("Consulta retornou dataset vazio.")
 
