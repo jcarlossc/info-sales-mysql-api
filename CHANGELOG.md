@@ -1,5 +1,23 @@
 # Changelog
 
+## [0.6.0](https://github.com/jcarlossc/info-sales-mysql-api/compare/v0.5.2...v0.6.0) (2026-07-13)
+
+
+### Features
+
+* Função load_sales adicionada ([eb824de](https://github.com/jcarlossc/info-sales-mysql-api/commit/eb824de3754f8705eff695b8a0e8806639569b2a))
+
+
+### Bug Fixes
+
+* pandas-stubs adicionado ([ddd54cc](https://github.com/jcarlossc/info-sales-mysql-api/commit/ddd54cc0d04979b84c41f70a4c8d472f191a9d91))
+
+
+### Documentation
+
+* Comentários adicionados ([7e50634](https://github.com/jcarlossc/info-sales-mysql-api/commit/7e50634fcff00faed6c243c1b432f404bac5f391))
+* Docstrings adicionados ([464b3de](https://github.com/jcarlossc/info-sales-mysql-api/commit/464b3deedf63b759e8eec96d5e9dca09e93ad5d4))
+
 ## [0.5.2](https://github.com/jcarlossc/info-sales-mysql-api/compare/v0.5.1...v0.5.2) (2026-07-13)
 
 
