@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.5.2](https://github.com/jcarlossc/info-sales-mysql-api/compare/v0.5.1...v0.5.2) (2026-07-13)
+
+
+### Bug Fixes
+
+* pipeline-service modificado ([81bc721](https://github.com/jcarlossc/info-sales-mysql-api/commit/81bc721e5af7f09a60f2840c7101132a2166dcd4))
+* pipeline-service modificado ([6a829e1](https://github.com/jcarlossc/info-sales-mysql-api/commit/6a829e1764df8fd39679b06de95931a3f0c784a8))
+
 ## [0.5.1](https://github.com/jcarlossc/info-sales-mysql-api/compare/v0.5.0...v0.5.1) (2026-07-13)
 
 
