@@ -40,8 +40,6 @@ def run_pipeline() -> None:
         delay=3,
     )
 
-    print(engine)
-
     df = get_load_sales(engine)
 
     print(df)
