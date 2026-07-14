@@ -6,6 +6,37 @@ from info_sales_mysql_api.utils.load_yaml.loader_yaml import load_all_configs
 
 
 def standardize_sales_data(df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Realiza padronização dos dados de vendas.
+
+    Etapas executadas:
+    - valida colunas obrigatórias
+    - converte tipos de dados
+    - remove espaços extras
+    - padroniza texto
+
+    Parameters
+    ----------
+    df : pd.DataFrame
+        DataFrame bruto de vendas.
+
+    Returns
+    -------
+    pd.DataFrame
+        DataFrame padronizado.
+
+    Raises
+    ------
+    KeyError
+        Quando colunas obrigatórias estão ausentes.
+
+    ValueError
+        Quando transformação falha.
+
+    Exception
+        Para erros inesperados.
+    """
+
     # Recupera logger do módulo atual para
     # rastreamento do fluxo de execução.
     logger = logging.getLogger(__name__)
