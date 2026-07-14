@@ -9,6 +9,9 @@ from info_sales_mysql_api.database.connection.get_connection import get_engine
 from info_sales_mysql_api.utils.config_env.Settings import Settings
 from info_sales_mysql_api.utils.retry.load_retry import retry_connect
 from info_sales_mysql_api.database.query.load_sales import get_load_sales
+from info_sales_mysql_api.standardization.get_standardization import (
+    standardize_sales_data,
+)
 
 
 def run_pipeline() -> None:
@@ -43,5 +46,7 @@ def run_pipeline() -> None:
     df = get_load_sales(engine)
 
     print(df)
+
+    standardize_sales_data(df)
 
     engine.dispose()
