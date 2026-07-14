@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.7.0](https://github.com/jcarlossc/info-sales-mysql-api/compare/v0.6.1...v0.7.0) (2026-07-14)
+
+
+### Features
+
+* Arquivo get_standardization adicionado ([20b1f93](https://github.com/jcarlossc/info-sales-mysql-api/commit/20b1f9369cbadcff3afa4ce63bd1340d4acccbe8))
+* Arquivo get_standardization adicionado ([10f817c](https://github.com/jcarlossc/info-sales-mysql-api/commit/10f817c5489417a9b2d0d43618cb9482828fc780))
+
 ## [0.6.1](https://github.com/jcarlossc/info-sales-mysql-api/compare/v0.6.0...v0.6.1) (2026-07-13)
 
 
