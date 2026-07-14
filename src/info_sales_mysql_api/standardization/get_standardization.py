@@ -16,6 +16,13 @@ def standardize_sales_data(df: pd.DataFrame) -> pd.DataFrame:
 
     required_columns = configs["db"]["columns"]
 
+    missing = [col for col in required_columns if col not in df.columns]
+
+    if missing:
+        logger.warning(f"Colunas ausentes: {missing}")
+
+        raise KeyError(f"Colunas obrigatórias ausentes: {missing}")
+
     integer_columns = [
         required_columns["venda_id"],
         required_columns["vendedor_id"],
