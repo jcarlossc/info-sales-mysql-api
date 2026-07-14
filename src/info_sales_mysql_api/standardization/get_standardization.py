@@ -16,46 +16,61 @@ def standardize_sales_data(df: pd.DataFrame) -> pd.DataFrame:
 
     required_columns = configs["db"]["columns"]
 
-    missing = [col for col in required_columns if col not in df.columns]
+    try:
+        missing = [col for col in required_columns if col not in df.columns]
 
-    if missing:
-        logger.warning(f"Colunas ausentes: {missing}")
+        if missing:
+            logger.warning(f"Colunas ausentes: {missing}")
 
-        raise KeyError(f"Colunas obrigatórias ausentes: {missing}")
+            raise KeyError(f"Colunas obrigatórias ausentes: {missing}")
 
-    integer_columns = [
-        required_columns["venda_id"],
-        required_columns["vendedor_id"],
-        required_columns["produto_id"],
-        required_columns["quantidade"],
-    ]
+        integer_columns = [
+            required_columns["venda_id"],
+            required_columns["vendedor_id"],
+            required_columns["produto_id"],
+            required_columns["quantidade"],
+        ]
 
-    for column in integer_columns:
-        df[column] = pd.to_numeric(df[column], errors="coerce").astype("Int64")
+        for column in integer_columns:
+            df[column] = pd.to_numeric(df[column], errors="coerce").astype("Int64")
 
-    df[required_columns["data_venda"]] = pd.to_datetime(
-        df[required_columns["data_venda"]], errors="coerce"
-    )
+        df[required_columns["data_venda"]] = pd.to_datetime(
+            df[required_columns["data_venda"]], errors="coerce"
+        )
 
-    numeric_cols = [
-        required_columns["desconto"],
-        required_columns["valor_venda"],
-        required_columns["valor_compra"],
-    ]
+        numeric_cols = [
+            required_columns["desconto"],
+            required_columns["valor_venda"],
+            required_columns["valor_compra"],
+        ]
 
-    for col in numeric_cols:
-        df[col] = pd.to_numeric(df[col], errors="coerce")
+        for col in numeric_cols:
+            df[col] = pd.to_numeric(df[col], errors="coerce")
 
-    text_cols = [
-        required_columns["nome_vendedor"],
-        required_columns["nome_produto"],
-        required_columns["forma_pagamento"],
-        required_columns["cidade"],
-        required_columns["estado"],
-        required_columns["status"],
-    ]
+        text_cols = [
+            required_columns["nome_vendedor"],
+            required_columns["nome_produto"],
+            required_columns["forma_pagamento"],
+            required_columns["cidade"],
+            required_columns["estado"],
+            required_columns["status"],
+        ]
 
-    for col in text_cols:
-        df[col] = df[col].astype(str).str.strip().str.lower()
+        for col in text_cols:
+            df[col] = df[col].astype(str).str.strip().str.lower()
 
-    return df
+        logger.info("Padronização concluída.")
+
+        return df
+
+    except KeyError as error:
+        logger.warning(f"Erro de estrutura: {error}")
+        raise
+
+    except ValueError as error:
+        logger.error(f"Erro de transformação: {error}")
+        raise
+
+    except Exception as error:
+        logger.exception(f"Erro inesperado durante padronização: {error}")
+        raise
