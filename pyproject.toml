@@ -43,8 +43,8 @@ dev = [
 [tool.taskipy.tasks]
 run_app = "poetry run info_sales"
 run_pytest = "poetry run pytest ."
-run_covhtml = "poetry run pytest --cov=test_senior --cov-report=html"
-run_covcmd = "poetry run pytest --cov=test_senior --cov-report=term-missing"
+run_covhtml = "poetry run pytest --cov=info_sales_mysql_api --cov-report=html"
+run_covcmd = "poetry run pytest --cov=info_sales_mysql_api --cov-report=term-missing"
 run_format = "poetry run ruff format ."
 run_lint = "ruff check ."
 run_mypy = "poetry run mypy ."
