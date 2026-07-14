@@ -6,17 +6,23 @@ from info_sales_mysql_api.utils.load_yaml.loader_yaml import load_all_configs
 
 
 def standardize_sales_data(df: pd.DataFrame) -> pd.DataFrame:
+    # Recupera logger do módulo atual para
+    # rastreamento do fluxo de execução.
     logger = logging.getLogger(__name__)
 
     logger.info("Iniciando padronização dos dados.")
 
+    # Configura caminhos
     config_path = Path("config")
 
     configs = load_all_configs(config_path)
 
+    # Colunas a serem padronizadas
     required_columns = configs["db"]["columns"]
 
     try:
+        # Verifica se todas as colunas
+        # necessárias existem.
         missing = [col for col in required_columns if col not in df.columns]
 
         if missing:
@@ -31,9 +37,11 @@ def standardize_sales_data(df: pd.DataFrame) -> pd.DataFrame:
             required_columns["quantidade"],
         ]
 
+        # Converte colunas para inteiro.
         for column in integer_columns:
             df[column] = pd.to_numeric(df[column], errors="coerce").astype("Int64")
 
+        # Converte datas.
         df[required_columns["data_venda"]] = pd.to_datetime(
             df[required_columns["data_venda"]], errors="coerce"
         )
@@ -44,6 +52,7 @@ def standardize_sales_data(df: pd.DataFrame) -> pd.DataFrame:
             required_columns["valor_compra"],
         ]
 
+        # Converte variáveis numéricas.
         for col in numeric_cols:
             df[col] = pd.to_numeric(df[col], errors="coerce")
 
@@ -56,6 +65,8 @@ def standardize_sales_data(df: pd.DataFrame) -> pd.DataFrame:
             required_columns["status"],
         ]
 
+        # Remove espaços extras
+        # e padroniza textos.
         for col in text_cols:
             df[col] = df[col].astype(str).str.strip().str.lower()
 
