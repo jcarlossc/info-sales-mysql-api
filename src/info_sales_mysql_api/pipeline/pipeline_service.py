@@ -12,6 +12,7 @@ from info_sales_mysql_api.database.query.load_sales import get_load_sales
 from info_sales_mysql_api.standardization.get_standardization import (
     standardize_sales_data,
 )
+from info_sales_mysql_api.cleanning.data_clean import validate_sales_data
 
 
 def run_pipeline() -> None:
@@ -47,6 +48,12 @@ def run_pipeline() -> None:
 
     print(df)
 
-    standardize_sales_data(df)
+    df = standardize_sales_data(df)
+
+    df = validate_sales_data(df)
+
+    print(df)
+
+    logger.info(f"Finalizando pipeline com {len(df)} registros.")
 
     engine.dispose()
