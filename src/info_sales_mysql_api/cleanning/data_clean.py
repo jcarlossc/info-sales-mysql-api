@@ -94,6 +94,7 @@ def validate_sales_data(df: pd.DataFrame) -> pd.DataFrame:
             required_columns["estado"],
             required_columns["forma_pagamento"],
             required_columns["status"],
+            required_columns["categoria"],
         ]
 
         logger.info("Iniciando teste limpeza de valores nulos.")
