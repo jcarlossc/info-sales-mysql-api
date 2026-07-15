@@ -6,6 +6,38 @@ from info_sales_mysql_api.utils.load_yaml.loader_yaml import load_all_configs
 
 
 def validate_sales_data(df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Realiza testes de qualidade e limpeza dos dados de vendas.
+
+    Regras aplicadas
+    ----------------
+    - Gera IDs para identificadores nulos.
+    - Remove registros com datas obrigatórias nulas.
+    - Remove registros com valores numéricos obrigatórios nulos.
+    - Preenche desconto nulo com zero.
+    - Preenche colunas textuais nulas com "não informado".
+    - Remove registros duplicados.
+    - Verifica valores negativos.
+
+    Parameters
+    ----------
+    df : pd.DataFrame
+        DataFrame previamente padronizado.
+
+    Returns
+    -------
+    pd.DataFrame
+        DataFrame validado.
+
+    Raises
+    ------
+    ValueError
+        Quando existir valor negativo em colunas obrigatórias.
+
+    Exception
+        Para erros inesperados durante a validação.
+    """
+
     # Recupera logger do módulo atual para
     # rastreamento do fluxo de execução.
     logger = logging.getLogger(__name__)
