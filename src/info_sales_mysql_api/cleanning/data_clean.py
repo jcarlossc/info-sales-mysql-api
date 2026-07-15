@@ -6,46 +6,55 @@ from info_sales_mysql_api.utils.load_yaml.loader_yaml import load_all_configs
 
 
 def validate_sales_data(df: pd.DataFrame) -> pd.DataFrame:
+    # Recupera logger do módulo atual para
+    # rastreamento do fluxo de execução.
     logger = logging.getLogger(__name__)
 
     logger.info("Iniciando limpeza dos dados.")
 
+    # Configura caminhos
     config_path = Path("config")
 
     configs = load_all_configs(config_path)
 
+    # Colunas a serem testadas e limpas
     required_columns = configs["db"]["columns"]
 
     missing = [col for col in required_columns if col not in df.columns]
 
     try:
+        # Verifica se todas as colunas
+        # necessárias existem.
         if missing:
             logger.warning(f"Colunas ausentes: {missing}")
 
             raise KeyError(f"Colunas obrigatórias ausentes: {missing}")
 
-        logger.info("Iniciando teste e/ou limpeza de valores nulos.")
-
+        # Colunas a serem testadas e convertidas em integer
         required_id_columns = [
             required_columns["venda_id"],
             required_columns["vendedor_id"],
             required_columns["produto_id"],
         ]
 
+        # Colunas a serem testadas e convertidas em datetime
         required_date_columns = [
             required_columns["data_venda"],
         ]
 
+        # Colunas a serem testadas e convertidas em float
         required_numeric_columns = [
             required_columns["quantidade"],
             required_columns["valor_compra"],
             required_columns["valor_venda"],
         ]
 
+        # Colunas a serem testadas e convertidas em float
         optional_numeric_columns = [
             required_columns["desconto"],
         ]
 
+        # Colunas a serem testadas e convertidas em string
         text_columns = [
             required_columns["nome_vendedor"],
             required_columns["nome_produto"],
@@ -55,6 +64,9 @@ def validate_sales_data(df: pd.DataFrame) -> pd.DataFrame:
             required_columns["status"],
         ]
 
+        logger.info("Iniciando teste limpeza de valores nulos.")
+
+        # Testa e converte nulos em integer
         for column in required_id_columns:
             null_mask = df[column].isna()
 
@@ -82,6 +94,7 @@ def validate_sales_data(df: pd.DataFrame) -> pd.DataFrame:
                     column,
                 )
 
+        # Testa e apaga nulos
         for column in required_date_columns:
             null_mask = df["data_venda"].isna()
 
@@ -101,6 +114,7 @@ def validate_sales_data(df: pd.DataFrame) -> pd.DataFrame:
                     column,
                 )
 
+        # Testa e apaga nulos
         for column in required_numeric_columns:
             null_mask = df[column].isna()
 
@@ -121,6 +135,7 @@ def validate_sales_data(df: pd.DataFrame) -> pd.DataFrame:
                     column,
                 )
 
+        # Testa e converte nulos para 0
         for column in optional_numeric_columns:
             null_count = df[column].isna().sum()
 
@@ -139,6 +154,7 @@ def validate_sales_data(df: pd.DataFrame) -> pd.DataFrame:
                     column,
                 )
 
+        # Testa e converte nulos para 'não informado'
         for column in text_columns:
             null_count = df[column].isna().sum()
 
@@ -157,8 +173,9 @@ def validate_sales_data(df: pd.DataFrame) -> pd.DataFrame:
                     column,
                 )
 
-        logger.info("Iniciando teste e/ou limpeza de valores duplicados.")
+        logger.info("Iniciando teste e limpeza de valores duplicados.")
 
+        # Testa e somente recupera primeiro registro duplicado
         for column in required_id_columns:
             duplicated = df.duplicated(subset=["venda_id"])
 
@@ -181,8 +198,9 @@ def validate_sales_data(df: pd.DataFrame) -> pd.DataFrame:
                     column,
                 )
 
-        logger.info("Iniciando teste e/ou limpeza de valores negativos.")
+        logger.info("Iniciando teste e limpeza de valores negativos.")
 
+        # Testa e converte negativos em positivos
         for column in required_numeric_columns:
             negative_count = (df[column] < 0).sum()
 
@@ -193,7 +211,7 @@ def validate_sales_data(df: pd.DataFrame) -> pd.DataFrame:
                     negative_count,
                 )
 
-                raise ValueError(f"A coluna '{column}' contém valores negativos.")
+                df[column] = df[column].abs()
 
             logger.info(
                 "A coluna '%s' não possui valores negativos.",
