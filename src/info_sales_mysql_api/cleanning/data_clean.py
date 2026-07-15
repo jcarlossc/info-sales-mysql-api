@@ -16,6 +16,13 @@ def validate_sales_data(df: pd.DataFrame) -> pd.DataFrame:
 
     required_columns = configs["db"]["columns"]
 
+    missing = [col for col in required_columns if col not in df.columns]
+
+    if missing:
+        logger.warning(f"Colunas ausentes: {missing}")
+
+        raise KeyError(f"Colunas obrigatórias ausentes: {missing}")
+
     logger.info("Iniciando teste e/ou limpeza de valores nulos.")
 
     required_id_columns = [
