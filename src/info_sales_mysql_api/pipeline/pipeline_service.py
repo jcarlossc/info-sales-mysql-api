@@ -13,6 +13,7 @@ from info_sales_mysql_api.standardization.get_standardization import (
     standardize_sales_data,
 )
 from info_sales_mysql_api.cleanning.data_clean import validate_sales_data
+from info_sales_mysql_api.summary.get_summary import create_sales_summary
 
 
 def run_pipeline() -> None:
@@ -46,11 +47,11 @@ def run_pipeline() -> None:
 
     df = get_load_sales(engine)
 
-    print(df)
-
     df = standardize_sales_data(df)
 
     df = validate_sales_data(df)
+
+    df = create_sales_summary(df)
 
     print(df)
 
