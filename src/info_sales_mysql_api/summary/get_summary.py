@@ -7,6 +7,35 @@ from info_sales_mysql_api.utils.load_yaml.loader_yaml import load_all_configs
 
 
 def create_sales_summary(df: pd.DataFrame) -> dict:
+    """
+    Cria um resumo analítico completo do conjunto de dados de vendas.
+
+    A função calcula indicadores (KPIs) e produz análises por
+    produto, categoria, vendedor, localização geográfica,
+    período, forma de pagamento e status dos pedidos.
+
+    Parameters
+    ----------
+    df : pd.DataFrame
+        DataFrame contendo os dados das vendas.
+
+    Returns
+    -------
+    dict
+        Dicionário contendo todas as métricas calculadas.
+
+    Raises
+    ------
+    TypeError
+        Caso o parâmetro informado não seja um DataFrame.
+
+    ValueError
+        Caso o DataFrame esteja vazio.
+
+    KeyError
+        Caso alguma coluna obrigatória não exista.
+    """
+
     # Recupera logger do módulo atual para
     # rastreamento do fluxo de execução.
     logger = logging.getLogger(__name__)
