@@ -51,9 +51,9 @@ def run_pipeline() -> None:
 
     df = validate_sales_data(df)
 
-    df = create_sales_summary(df)
+    summary_dict = create_sales_summary(df)
 
-    print(df)
+    print(summary_dict)
 
     logger.info(f"Finalizando pipeline com {len(df)} registros.")
 
