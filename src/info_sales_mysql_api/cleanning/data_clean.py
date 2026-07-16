@@ -55,6 +55,14 @@ def validate_sales_data(df: pd.DataFrame) -> pd.DataFrame:
     missing = [col for col in required_columns if col not in df.columns]
 
     try:
+        # Verifica df é instância de DataFrame
+        if not isinstance(df, pd.DataFrame):
+            raise TypeError("df deve ser um pandas.DataFrame.")
+
+        # Verifica df está vazio
+        if df.empty:
+            raise ValueError("O DataFrame está vazio.")
+
         # Verifica se todas as colunas
         # necessárias existem.
         if missing:
