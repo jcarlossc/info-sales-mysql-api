@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.9.0](https://github.com/jcarlossc/info-sales-mysql-api/compare/v0.8.0...v0.9.0) (2026-07-16)
+
+
+### Features
+
+* arquivo get_summary adicionado ([deeb5bc](https://github.com/jcarlossc/info-sales-mysql-api/commit/deeb5bcc1d16d7f3b85ce2160586e13edf4073a7))
+
+
+### Bug Fixes
+
+* Arquivo data_clean modificado ([5aae868](https://github.com/jcarlossc/info-sales-mysql-api/commit/5aae8680e3bfd10e87c57188733af5b62afeb7df))
+* Arquivo get_summary modificado ([2b98303](https://github.com/jcarlossc/info-sales-mysql-api/commit/2b98303e3bae46a8179eaf6e6f1001cfc7043d59))
+
 ## [0.8.0](https://github.com/jcarlossc/info-sales-mysql-api/compare/v0.7.1...v0.8.0) (2026-07-15)
 
 
