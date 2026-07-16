@@ -7,30 +7,39 @@ from info_sales_mysql_api.utils.load_yaml.loader_yaml import load_all_configs
 
 
 def create_sales_summary(df: pd.DataFrame) -> dict:
+    # Recupera logger do módulo atual para
+    # rastreamento do fluxo de execução.
     logger = logging.getLogger(__name__)
 
     logger.info("Iniciando criação de métrica e KPIs.")
 
+    # Configura caminhos
+    config_path = Path("config")
+
+    configs = load_all_configs(config_path)
+
+    # Verifica colunas a serem calculadas
+    required_columns = configs["db"]["columns"]
+
+    missing = [col for col in required_columns if col not in df.columns]
+
     try:
-        config_path = Path("config")
-
-        configs = load_all_configs(config_path)
-
-        required_columns = configs["db"]["columns"]
-
-        missing = [col for col in required_columns if col not in df.columns]
-
+        # Verifica df é instância de DataFrame
         if not isinstance(df, pd.DataFrame):
             raise TypeError("df deve ser um pandas.DataFrame.")
 
+        # Verifica df está vazio
         if df.empty:
             raise ValueError("O DataFrame está vazio.")
 
+        # Verifica se todas as colunas
+        # necessárias existem.
         if missing:
             logger.warning(f"Colunas ausentes: {missing}")
 
             raise KeyError(f"Colunas obrigatórias ausentes: {missing}")
 
+        # Colunas derivadas utilizadas em praticamente todas as análises.
         df["faturamento"] = df["valor_venda"] * df["quantidade"] - df["desconto"]
 
         df["lucro"] = (df["valor_venda"] - df["valor_compra"]) * df["quantidade"]
@@ -39,6 +48,7 @@ def create_sales_summary(df: pd.DataFrame) -> dict:
         df["mes"] = df["data_venda"].dt.month_name()
         df["dia_semana"] = df["data_venda"].dt.day_name()
 
+        # Dicionário com as métricas e KPIs
         summary = {
             "metadata": {
                 "rows": len(df),
