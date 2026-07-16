@@ -1,6 +1,9 @@
 from __future__ import annotations
 import logging
+from pathlib import Path
 import pandas as pd
+
+from info_sales_mysql_api.utils.load_yaml.loader_yaml import load_all_configs
 
 
 def create_sales_summary(df: pd.DataFrame) -> dict:
@@ -9,6 +12,25 @@ def create_sales_summary(df: pd.DataFrame) -> dict:
     logger.info("Iniciando criação de métrica e KPIs.")
 
     try:
+        config_path = Path("config")
+
+        configs = load_all_configs(config_path)
+
+        required_columns = configs["db"]["columns"]
+
+        missing = [col for col in required_columns if col not in df.columns]
+
+        if not isinstance(df, pd.DataFrame):
+            raise TypeError("df deve ser um pandas.DataFrame.")
+
+        if df.empty:
+            raise ValueError("O DataFrame está vazio.")
+
+        if missing:
+            logger.warning(f"Colunas ausentes: {missing}")
+
+            raise KeyError(f"Colunas obrigatórias ausentes: {missing}")
+
         df["faturamento"] = df["valor_venda"] * df["quantidade"] - df["desconto"]
 
         df["lucro"] = (df["valor_venda"] - df["valor_compra"]) * df["quantidade"]
