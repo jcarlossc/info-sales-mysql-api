@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.10.0](https://github.com/jcarlossc/info-sales-mysql-api/compare/v0.9.2...v0.10.0) (2026-07-17)
+
+
+### Features
+
+* Arquivo schema_summary adicionado ([f72720d](https://github.com/jcarlossc/info-sales-mysql-api/commit/f72720d900dccd9d6827c6d557edb6bbe3ea3c30))
+* Arquivo schema_summary adicionado ([b6031b7](https://github.com/jcarlossc/info-sales-mysql-api/commit/b6031b778e159bc24f8e3c0e0b23db9e4c5b6326))
+
 ## [0.9.2](https://github.com/jcarlossc/info-sales-mysql-api/compare/v0.9.1...v0.9.2) (2026-07-16)
 
 
