@@ -13,7 +13,8 @@ dependencies = [
     "sqlalchemy (>=2.0.51,<3.0.0)",
     "pymysql (>=1.2.0,<2.0.0)",
     "pandas (>=3.0.3,<4.0.0)",
-    "pandas-stubs (>=3.0.3.260530,<4.0.0.0)"
+    "pandas-stubs (>=3.0.3.260530,<4.0.0.0)",
+    "fastapi (>=0.139.2,<0.140.0)"
 ]
 
 [tool.poetry]
@@ -37,7 +38,8 @@ dev = [
     "pytest-cov (>=7.1.0,<8.0.0)",
     "taskipy (>=1.14.1,<2.0.0)",
     "types-pyyaml (>=6.0.12.20260518,<7.0.0.0)",
-    "pre-commit (>=4.6.0,<5.0.0)"
+    "pre-commit (>=4.6.0,<5.0.0)",
+    "uvicorn (>=0.51.0,<0.52.0)"
 ]
 
 [tool.taskipy.tasks]
