@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.10.1](https://github.com/jcarlossc/info-sales-mysql-api/compare/v0.10.0...v0.10.1) (2026-07-17)
+
+
+### Documentation
+
+* Docstring adicionado ([1df2e90](https://github.com/jcarlossc/info-sales-mysql-api/commit/1df2e905f8400f0230d9a0ad844b867daa35e79d))
+* Docstring adicionado ([eb8851f](https://github.com/jcarlossc/info-sales-mysql-api/commit/eb8851fc58fad93189b1b17b0eb107b37e3a80f6))
+
 ## [0.10.0](https://github.com/jcarlossc/info-sales-mysql-api/compare/v0.9.2...v0.10.0) (2026-07-17)
 
 
