@@ -42,6 +42,9 @@ def run_pipeline() -> dict:
     # rastreamento do fluxo de execução.
     logger = logging.getLogger(__name__)
 
+    # Inicializa engine
+    engine = None
+
     try:
         # Representa as configurações da aplicação(.env).
         settings = Settings()
