@@ -43,12 +43,12 @@ dev = [
 ]
 
 [tool.taskipy.tasks]
-run_app = "poetry run info_sales"
-run_pytest = "poetry run pytest ."
-run_covhtml = "poetry run pytest --cov=info_sales_mysql_api --cov-report=html"
-run_covcmd = "poetry run pytest --cov=info_sales_mysql_api --cov-report=term-missing"
-run_format = "poetry run ruff format ."
-run_lint = "ruff check ."
-run_mypy = "poetry run mypy ."
-run_check = "poetry run ruff format --check ."
-run_precommit = "poetry run pre-commit run --all-files"
+app = "uvicorn info_sales_mysql_api.main:app --reload --app-dir src"
+pytest = "poetry run pytest ."
+covhtml = "poetry run pytest --cov=info_sales_mysql_api --cov-report=html"
+covcmd = "poetry run pytest --cov=info_sales_mysql_api --cov-report=term-missing"
+format = "poetry run ruff format ."
+lint = "ruff check ."
+mypy = "poetry run mypy ."
+check = "poetry run ruff format --check ."
+precommit = "poetry run pre-commit run --all-files"
