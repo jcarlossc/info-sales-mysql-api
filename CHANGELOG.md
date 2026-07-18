@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.10.2](https://github.com/jcarlossc/info-sales-mysql-api/compare/v0.10.1...v0.10.2) (2026-07-18)
+
+
+### Bug Fixes
+
+* pyproject.toml modificado ([8c79f09](https://github.com/jcarlossc/info-sales-mysql-api/commit/8c79f09259601f3552a69565281b12f599644153))
+* pyproject.toml modificado ([5eab703](https://github.com/jcarlossc/info-sales-mysql-api/commit/5eab703e91a542bb982882dac36cbd529a5723a1))
+
 ## [0.10.1](https://github.com/jcarlossc/info-sales-mysql-api/compare/v0.10.0...v0.10.1) (2026-07-17)
 
 
