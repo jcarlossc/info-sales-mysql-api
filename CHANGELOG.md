@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.10.6](https://github.com/jcarlossc/info-sales-mysql-api/compare/v0.10.5...v0.10.6) (2026-07-18)
+
+
+### Bug Fixes
+
+* Arquivo pipeline_service modificado ([3cb8200](https://github.com/jcarlossc/info-sales-mysql-api/commit/3cb82009fd3b513cbf6135f6db5f41fd7d361e1b))
+
 ## [0.10.5](https://github.com/jcarlossc/info-sales-mysql-api/compare/v0.10.4...v0.10.5) (2026-07-18)
 
 
