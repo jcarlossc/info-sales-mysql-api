@@ -1,6 +1,6 @@
 [project]
 name = "info-sales-mysql-api"
-version = "0.10.1"
+version = "0.10.2"
 description = ""
 authors = [
     {name = "jcarlossc",email = "jcarlossc1977@gmail.com"}
