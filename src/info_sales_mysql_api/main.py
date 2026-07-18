@@ -1,10 +1,10 @@
-from info_sales_mysql_api.pipeline.pipeline_service import run_pipeline
+from fastapi import FastAPI
 
+from info_sales_mysql_api.api.routes.summary_router import router
 
-def main() -> None:
-    print("TESTANDO INFO_SALES_MYSQL_API ##")
-    run_pipeline()
+app = FastAPI(
+    title="Info Sales MySQL API",
+    version="1.0.0",
+)
 
-
-if __name__ == "__main__":
-    main()
+app.include_router(router)
