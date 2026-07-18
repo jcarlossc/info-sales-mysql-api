@@ -62,3 +62,54 @@ def summary_mock():
             "orders": {"Concluído": 100},
         },
     }
+
+
+def test_get_summary(
+    monkeypatch,
+    summary_mock,
+):
+    monkeypatch.setattr(
+        "info_sales_mysql_api.api.routes.summary_router.run_pipeline",
+        lambda: summary_mock,
+    )
+
+    response = client.get("/summary")
+
+    assert response.status_code == 200
+
+    body = response.json()
+
+    assert body["kpis"]["revenue"] == summary_mock["kpis"]["revenue"]
+    assert body["metadata"]["rows"] == summary_mock["metadata"]["rows"]
+
+
+def test_get_section(
+    monkeypatch,
+    summary_mock,
+):
+    monkeypatch.setattr(
+        "info_sales_mysql_api.api.routes.summary_router.run_pipeline",
+        lambda: summary_mock,
+    )
+
+    response = client.get("/summary/kpis")
+
+    assert response.status_code == 200
+
+    assert response.json()["margin"] == 25.0
+
+
+def test_get_item(
+    monkeypatch,
+    summary_mock,
+):
+    monkeypatch.setattr(
+        "info_sales_mysql_api.api.routes.summary_router.run_pipeline",
+        lambda: summary_mock,
+    )
+
+    response = client.get("/summary/kpis/margin")
+
+    assert response.status_code == 200
+
+    assert response.json() == 25.0
