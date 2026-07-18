@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.10.4](https://github.com/jcarlossc/info-sales-mysql-api/compare/v0.10.3...v0.10.4) (2026-07-18)
+
+
+### Bug Fixes
+
+* Arquivo main modificado ([22e8884](https://github.com/jcarlossc/info-sales-mysql-api/commit/22e888435528eef29292fc80e8288d21d2d1ba9a))
+
 ## [0.10.3](https://github.com/jcarlossc/info-sales-mysql-api/compare/v0.10.2...v0.10.3) (2026-07-18)
 
 
