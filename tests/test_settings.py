@@ -6,6 +6,7 @@ def test_settings_load(monkeypatch):
     Deve carregar corretamente as variáveis de ambiente.
     """
 
+    monkeypatch.setenv("API_KEY", "abc123")
     monkeypatch.setenv("MYSQL_HOST", "localhost")
     monkeypatch.setenv("MYSQL_PORT", "3306")
     monkeypatch.setenv("MYSQL_DATABASE", "empresa")
@@ -14,6 +15,8 @@ def test_settings_load(monkeypatch):
 
     settings = Settings()
 
+    assert settings.api_key == "abc123"
+    assert settings.mysql_host == "localhost"
     assert settings.mysql_host == "localhost"
     assert settings.mysql_port == 3306
     assert settings.mysql_database == "empresa"
