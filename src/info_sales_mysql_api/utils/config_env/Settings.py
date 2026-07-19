@@ -9,6 +9,9 @@ class Settings(BaseSettings):
     arquivo .env.
     """
 
+    # Chave da API
+    api_key: str
+
     # Endereço do servidor MySQL.
     mysql_host: str
 
