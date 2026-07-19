@@ -1,10 +1,12 @@
+import logging
+
 from fastapi import HTTPException
 from fastapi import Security
 from fastapi.security import APIKeyHeader
 
-from info_sales_mysql_api.utils.config_env.settings import settings
-from info_sales_mysql_api.utils.logger import logger
+from info_sales_mysql_api.utils.config_env.Settings import Settings
 
+logger = logging.getLogger(__name__)
 
 api_key_header = APIKeyHeader(
     name="X-API-Key",
@@ -14,6 +16,10 @@ api_key_header = APIKeyHeader(
 def validate_api_key(
     api_key: str = Security(api_key_header),
 ) -> str:
+    logger.info("Iniciando validação da chave de API.")
+
+    settings = Settings()
+
     if api_key != settings.api_key:
         logger.warning("Tentativa de acesso com API Key inválida.")
 
