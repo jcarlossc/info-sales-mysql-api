@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.11.0](https://github.com/jcarlossc/info-sales-mysql-api/compare/v0.10.6...v0.11.0) (2026-07-19)
+
+
+### Features
+
+* Arquivo api.key adicionado ([efd43cb](https://github.com/jcarlossc/info-sales-mysql-api/commit/efd43cb43d8031bfc06b62adbc49602d57298d75))
+* Arquivo api.key adicionado ([d8b0115](https://github.com/jcarlossc/info-sales-mysql-api/commit/d8b011583759ba14691f5592272dba3aab226b1f))
+
+
+### Bug Fixes
+
+* Arquivo api.key modificado ([ca1f1f4](https://github.com/jcarlossc/info-sales-mysql-api/commit/ca1f1f404585de6df627918fee1eb54ccb8a4f65))
+
 ## [0.10.6](https://github.com/jcarlossc/info-sales-mysql-api/compare/v0.10.5...v0.10.6) (2026-07-18)
 
 
