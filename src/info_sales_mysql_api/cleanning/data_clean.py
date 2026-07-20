@@ -52,13 +52,13 @@ def validate_sales_data(df: pd.DataFrame) -> pd.DataFrame:
     # Colunas a serem testadas e limpas
     required_columns = configs["db"]["columns"]
 
+    # Verifica df é instância de DataFrame
+    if not isinstance(df, pd.DataFrame):
+        raise TypeError("df deve ser um pandas.DataFrame.")
+
     missing = [col for col in required_columns if col not in df.columns]
 
     try:
-        # Verifica df é instância de DataFrame
-        if not isinstance(df, pd.DataFrame):
-            raise TypeError("df deve ser um pandas.DataFrame.")
-
         # Verifica df está vazio
         if df.empty:
             raise ValueError("O DataFrame está vazio.")
@@ -120,7 +120,12 @@ def validate_sales_data(df: pd.DataFrame) -> pd.DataFrame:
                     null_count,
                 )
 
-                next_id = int(df[column].max(skipna=True) or 0) + 1
+                max_id = df[column].max(skipna=True)
+
+                if pd.isna(max_id):
+                    max_id = 0
+
+                next_id = int(max_id) + 1
 
                 df.loc[null_mask, column] = range(
                     next_id,
