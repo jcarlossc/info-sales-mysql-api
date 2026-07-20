@@ -1,17 +1,26 @@
-from fastapi import FastAPI
-from fastapi.testclient import TestClient
 import pytest
 
-from info_sales_mysql_api.api.routes.summary_router import router
+from fastapi.testclient import TestClient
+from unittest.mock import patch
+from info_sales_mysql_api.main import app
+from info_sales_mysql_api.api.dependencies.api_key import validate_api_key
 
-app = FastAPI()
-app.include_router(router)
 
-client = TestClient(app)
+@pytest.fixture
+def client():
+    app.dependency_overrides[validate_api_key] = lambda: "abc123"
+
+    with TestClient(app) as client:
+        yield client
+
+    app.dependency_overrides.clear()
 
 
 @pytest.fixture
 def summary_mock():
+    """
+    Retorna um resumo simulado utilizado nos testes.
+    """
     return {
         "metadata": {
             "rows": 100,
@@ -64,52 +73,116 @@ def summary_mock():
     }
 
 
-def test_get_summary(
-    monkeypatch,
-    summary_mock,
-):
-    monkeypatch.setattr(
-        "info_sales_mysql_api.api.routes.summary_router.run_pipeline",
-        lambda: summary_mock,
-    )
+# Simula a execução do pipeline.
+@patch("info_sales_mysql_api.api.routes.summary_router.run_pipeline")
+def test_get_summary(mock_pipeline, client, summary_mock):
+    """
+    Deve retornar o resumo completo das vendas.
+    """
+    mock_pipeline.return_value = summary_mock
 
     response = client.get("/summary")
 
     assert response.status_code == 200
-
-    body = response.json()
-
-    assert body["kpis"]["revenue"] == summary_mock["kpis"]["revenue"]
-    assert body["metadata"]["rows"] == summary_mock["metadata"]["rows"]
+    assert response.json()["kpis"]["revenue"] == 10000.0
+    assert response.json()["metadata"]["rows"] == 100
 
 
-def test_get_section(
-    monkeypatch,
-    summary_mock,
-):
-    monkeypatch.setattr(
-        "info_sales_mysql_api.api.routes.summary_router.run_pipeline",
-        lambda: summary_mock,
-    )
+# Simula a execução do pipeline.
+@patch("info_sales_mysql_api.api.routes.summary_router.run_pipeline")
+def test_get_section(mock_pipeline, client, summary_mock):
+    """
+    Deve retornar uma seção específica do resumo.
+    """
+    mock_pipeline.return_value = summary_mock
 
     response = client.get("/summary/kpis")
 
     assert response.status_code == 200
-
     assert response.json()["margin"] == 25.0
 
 
-def test_get_item(
-    monkeypatch,
-    summary_mock,
-):
-    monkeypatch.setattr(
-        "info_sales_mysql_api.api.routes.summary_router.run_pipeline",
-        lambda: summary_mock,
-    )
+# Simula a execução do pipeline.
+@patch("info_sales_mysql_api.api.routes.summary_router.run_pipeline")
+def test_get_item(mock_pipeline, client, summary_mock):
+    """
+    Deve retornar um item específico de uma seção.
+    """
+    mock_pipeline.return_value = summary_mock
 
     response = client.get("/summary/kpis/margin")
 
     assert response.status_code == 200
-
     assert response.json() == 25.0
+
+
+# Simula erro de validação do schema.
+@patch("info_sales_mysql_api.api.routes.summary_router.run_pipeline")
+def test_get_summary_validation_error(mock_pipeline, client):
+    mock_pipeline.return_value = {}
+
+    response = client.get("/summary")
+
+    assert response.status_code == 500
+    assert response.json()["detail"] == "Erro ao validar a estrutura da resposta."
+
+
+# Simula erro inesperado no pipeline.
+@patch("info_sales_mysql_api.api.routes.summary_router.run_pipeline")
+def test_get_summary_internal_error(mock_pipeline, client):
+    mock_pipeline.side_effect = Exception("Erro")
+
+    response = client.get("/summary")
+
+    assert response.status_code == 500
+    assert response.json()["detail"] == "Erro interno ao processar a requisição."
+
+
+# Simula uma seção inexistente.
+@patch("info_sales_mysql_api.api.routes.summary_router.run_pipeline")
+def test_get_summary_section_not_found(mock_pipeline, client):
+    mock_pipeline.return_value = {"kpis": {}}
+
+    response = client.get("/summary/inexistente")
+
+    assert response.status_code == 404
+
+
+# Simula erro ao consultar uma seção.
+@patch("info_sales_mysql_api.api.routes.summary_router.run_pipeline")
+def test_get_summary_section_internal_error(mock_pipeline, client):
+    mock_pipeline.side_effect = Exception("Erro")
+
+    response = client.get("/summary/kpis")
+
+    assert response.status_code == 500
+
+
+# Simula uma seção inexistente.
+@patch("info_sales_mysql_api.api.routes.summary_router.run_pipeline")
+def test_get_summary_item_section_not_found(mock_pipeline, client):
+    mock_pipeline.return_value = {"kpis": {}}
+
+    response = client.get("/summary/outra/faturamento")
+
+    assert response.status_code == 404
+
+
+# Simula um item inexistente.
+@patch("info_sales_mysql_api.api.routes.summary_router.run_pipeline")
+def test_get_summary_item_not_found(mock_pipeline, client):
+    mock_pipeline.return_value = {"kpis": {"lucro": 100}}
+
+    response = client.get("/summary/kpis/faturamento")
+
+    assert response.status_code == 404
+
+
+# Simula erro ao consultar um item.
+@patch("info_sales_mysql_api.api.routes.summary_router.run_pipeline")
+def test_get_summary_item_internal_error(mock_pipeline, client):
+    mock_pipeline.side_effect = Exception("Erro")
+
+    response = client.get("/summary/kpis/lucro")
+
+    assert response.status_code == 500
