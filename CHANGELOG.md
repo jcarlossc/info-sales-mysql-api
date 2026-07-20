@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.11.1](https://github.com/jcarlossc/info-sales-mysql-api/compare/v0.11.0...v0.11.1) (2026-07-20)
+
+
+### Bug Fixes
+
+* arquivo data_clean modificado ([900d3db](https://github.com/jcarlossc/info-sales-mysql-api/commit/900d3db0a6bd1dfd10c35d0085ef30bd2126abe3))
+
 ## [0.11.0](https://github.com/jcarlossc/info-sales-mysql-api/compare/v0.10.6...v0.11.0) (2026-07-19)
 
 
