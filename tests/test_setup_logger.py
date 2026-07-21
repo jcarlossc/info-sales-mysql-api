@@ -40,8 +40,14 @@ def test_setup_logger_success(monkeypatch, tmp_path):
     # Verifica se o formato foi informado.
     assert called["format"] == "%(levelname)s - %(message)s"
 
-    # Verifica se foram configurados dois handlers.
-    assert len(called["handlers"]) == 2
+    # Verifica se foi configurado apenas o FileHandler.
+    assert len(called["handlers"]) == 1
+
+    # Verifica se o handler é um FileHandler.
+    assert isinstance(
+        called["handlers"][0],
+        logging.FileHandler,
+    )
 
 
 def test_setup_logger_invalid_config(tmp_path):
