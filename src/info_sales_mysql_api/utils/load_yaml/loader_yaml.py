@@ -70,8 +70,3 @@ def load_all_configs(config_path: Path) -> Dict[str, Any]:
 
     except yaml.YAMLError as error:
         raise ValueError(f"YAML_ERROR: erro ao processar YAML -> {error}") from error
-
-    except OSError as error:
-        raise OSError(
-            f"FILE_ERROR: falha ao acessar arquivos em {config_path}"
-        ) from error
