@@ -1,33 +1,84 @@
+import logging
+import pytest
+
 from info_sales_mysql_api.utils.loggers.logger import setup_logger
 
 
-def test_setup_logger_cria_arquivo_log(tmp_path):
+def test_setup_logger_success(monkeypatch, tmp_path):
     """
-    Verifica se o logger é configurado e
-    se o arquivo de log é criado.
+    Verifica se o logger é configurado corretamente
+    quando a configuração é válida.
     """
 
-    # Arrange (Preparação)
+    # Armazena os argumentos recebidos pelo basicConfig.
+    called = {}
 
-    # Configuração mínima necessária para o logger
-    logging_config = {
+    def fake_basic_config(**kwargs):
+        # Salva os parâmetros utilizados na configuração.
+        called.update(kwargs)
+
+    # Substitui logging.basicConfig pela implementação simulada.
+    monkeypatch.setattr(logging, "basicConfig", fake_basic_config)
+
+    # Arquivo temporário de log.
+    log_file = tmp_path / "app.log"
+
+    # Configuração simulada.
+    config = {
         "logging": {
             "level": "INFO",
-            "format": "%(asctime)s - %(levelname)s - %(message)s",
+            "format": "%(levelname)s - %(message)s",
         }
     }
 
-    # Arquivo de log temporário criado pelo pytest
-    log_file = tmp_path / "logs" / "app.log"
+    # Executa a função.
+    setup_logger(config, str(log_file))
 
-    # Act (Execução)
+    # Verifica se o nível foi configurado corretamente.
+    assert called["level"] == logging.INFO
 
-    setup_logger(logging_config=logging_config, log_file=str(log_file))
+    # Verifica se o formato foi informado.
+    assert called["format"] == "%(levelname)s - %(message)s"
 
-    # Assert (Verificação)
+    # Verifica se foram configurados dois handlers.
+    assert len(called["handlers"]) == 2
 
-    # Verifica se a pasta foi criada
-    assert log_file.parent.exists()
 
-    # Verifica se o arquivo de log foi criado
-    assert log_file.exists()
+def test_setup_logger_invalid_config(tmp_path):
+    """
+    Verifica se a função lança ValueError quando
+    a configuração de logging é inválida.
+    """
+
+    # Configuração sem a chave "logging".
+    config = {}
+
+    log_file = tmp_path / "app.log"
+
+    # Verifica se a exceção correta é lançada.
+    with pytest.raises(ValueError, match="CONFIG_ERROR"):
+        setup_logger(config, str(log_file))
+
+
+def test_setup_logger_os_error(monkeypatch):
+    """
+    Verifica se a função relança OSError quando
+    ocorre erro ao criar o arquivo de log.
+    """
+
+    # Simula falha ao criar o FileHandler.
+    def fake_file_handler(*args, **kwargs):
+        raise OSError("Sem permissão")
+
+    monkeypatch.setattr(logging, "FileHandler", fake_file_handler)
+
+    config = {
+        "logging": {
+            "level": "INFO",
+            "format": "%(message)s",
+        }
+    }
+
+    # Verifica se o erro é propagado corretamente.
+    with pytest.raises(OSError, match="FILE_ERROR"):
+        setup_logger(config, "logs/app.log")
