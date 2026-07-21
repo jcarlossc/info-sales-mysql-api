@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.11.2](https://github.com/jcarlossc/info-sales-mysql-api/compare/v0.11.1...v0.11.2) (2026-07-21)
+
+
+### Bug Fixes
+
+* Arquivo loader_yaml modificado ([f115ba1](https://github.com/jcarlossc/info-sales-mysql-api/commit/f115ba15a0f72cd523108e3165d9e9c9217faa07))
+* Arquivo loader_yaml modificado ([f76e7d7](https://github.com/jcarlossc/info-sales-mysql-api/commit/f76e7d7a49a4b97f2e85b7636c8ee8e6c61224d1))
+
 ## [0.11.1](https://github.com/jcarlossc/info-sales-mysql-api/compare/v0.11.0...v0.11.1) (2026-07-20)
 
 
