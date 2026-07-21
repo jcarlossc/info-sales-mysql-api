@@ -45,14 +45,14 @@ def create_sales_summary(df: pd.DataFrame) -> dict:
     # Configura caminhos
     config_path = Path("config")
 
-    configs = load_all_configs(config_path)
-
-    # Verifica colunas a serem calculadas
-    required_columns = configs["db"]["columns"]
-
-    missing = [col for col in required_columns if col not in df.columns]
-
     try:
+        configs = load_all_configs(config_path)
+
+        # Verifica colunas a serem calculadas
+        required_columns = configs["db"]["columns"]
+
+        missing = [col for col in required_columns if col not in df.columns]
+
         # Verifica df é instância de DataFrame
         if not isinstance(df, pd.DataFrame):
             raise TypeError("df deve ser um pandas.DataFrame.")
