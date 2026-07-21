@@ -61,9 +61,6 @@ def setup_logger(logging_config: Dict[str, Any], log_file: str) -> None:
                 # FileHandler grava os logs em arquivo para posterior auditoria
                 # e análise de execução do pipeline.
                 logging.FileHandler(log_file, encoding="utf-8"),
-                # StreamHandler envia os logs para o console (stdout),
-                # permitindo acompanhar a execução em tempo real.
-                logging.StreamHandler(),
             ],
         )
 
