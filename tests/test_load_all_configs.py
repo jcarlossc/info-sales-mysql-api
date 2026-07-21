@@ -1,40 +1,76 @@
+import pytest
 from pathlib import Path
 
 from info_sales_mysql_api.utils.load_yaml.loader_yaml import load_all_configs
 
 
-def test_load_all_configs_retorna_dicionario():
+def test_load_all_configs_success(tmp_path):
     """
-    Verifica se a função retorna um dicionário
-    ao carregar um arquivo YAML válido.
+    Verifica se todos os arquivos YAML do diretório
+    são carregados corretamente.
     """
 
-    # Arrange (Preparação)
-
-    # Diretório de teste contendo arquivos YAML
-    config_path = Path("config")
-
-    # Act (Execução)
-
-    # Executa a função que será testada
-    resultado = load_all_configs(config_path)
-
-    # Assert (Verificação)
-
-    # Verifica se o retorno é um dicionário
-    assert isinstance(resultado, dict)
-
-    # Verifica se a configuração "logging.yaml"
-    # foi carregada para o dicionário
-    assert resultado["logging"]["logging"]["level"] == "INFO"
-
-    # Verifica se a configuração "logging.yaml"
-    # foi carregada para o dicionário
-    assert (
-        resultado["logging"]["logging"]["format"]
-        == "%(asctime)s - %(levelname)s - %(name)s - %(message)s"
+    # Cria dois arquivos YAML temporários.
+    (tmp_path / "database.yaml").write_text(
+        "host: localhost\nport: 3306",
+        encoding="utf-8",
     )
 
-    # Verifica se a configuração "paths.yaml"
-    # foi carregada para o dicionário
-    assert resultado["paths"]["logs"]["file"] == "logs/app.log"
+    (tmp_path / "logging.yaml").write_text(
+        "level: INFO",
+        encoding="utf-8",
+    )
+
+    # Executa a função.
+    configs = load_all_configs(tmp_path)
+
+    # Verifica se os arquivos foram carregados.
+    assert "database" in configs
+    assert "logging" in configs
+
+    # Verifica o conteúdo carregado.
+    assert configs["database"]["host"] == "localhost"
+    assert configs["database"]["port"] == 3306
+    assert configs["logging"]["level"] == "INFO"
+
+
+def test_load_all_configs_directory_not_found():
+    """
+    Verifica se FileNotFoundError é lançado quando
+    o diretório informado não existe.
+    """
+
+    config_path = Path("diretorio_inexistente")
+
+    with pytest.raises(FileNotFoundError):
+        load_all_configs(config_path)
+
+
+def test_load_all_configs_not_directory(tmp_path):
+    """
+    Verifica se NotADirectoryError é lançado quando
+    o caminho informado não é um diretório.
+    """
+
+    # Cria um arquivo comum.
+    file = tmp_path / "config.yaml"
+    file.write_text("teste", encoding="utf-8")
+
+    with pytest.raises(NotADirectoryError):
+        load_all_configs(file)
+
+
+def test_load_all_configs_invalid_yaml(tmp_path):
+    """
+    Verifica se ValueError é lançado quando
+    um arquivo YAML possui sintaxe inválida.
+    """
+
+    # Cria um YAML inválido.
+    (tmp_path / "config.yaml").write_text(
+        "host: localhost\nporta: [1,2",
+        encoding="utf-8",
+    )
+
+    with pytest.raises(ValueError, match="YAML_ERROR"):
+        load_all_configs(tmp_path)

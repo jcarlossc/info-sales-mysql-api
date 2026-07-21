@@ -1,52 +1,96 @@
 import pandas as pd
-from unittest.mock import patch
+import pytest
+from sqlalchemy.exc import SQLAlchemyError
 
 from info_sales_mysql_api.database.query.load_sales import get_load_sales
 
 
-def test_get_load_sales_retorna_dataframe():
+def test_get_load_sales_success(monkeypatch):
     """
     Verifica se a função retorna um DataFrame
-    quando a consulta SQL retorna dados.
+    quando a consulta SQL é executada com sucesso.
     """
 
-    # Arrange (Preparação)
-
-    # Cria um DataFrame falso simulando
-    # o retorno do banco de dados.
-    dados_mock = pd.DataFrame(
+    # DataFrame simulado retornado pela consulta.
+    expected_df = pd.DataFrame(
         {
-            "vendas_id": [1],
-            "nome_produto": ["Notebook"],
-            "quantidade": [2],
-            "vendedor": ["Carlos"],
+            "venda_id": [1, 2],
+            "produto_id": [10, 20],
+            "quantidade": [5, 3],
         }
     )
 
-    # Cria um engine falso.
-    # Como não vamos acessar banco real,
-    # qualquer objeto serve.
-    engine_mock = "engine_teste"
+    # Simula a execução da consulta SQL.
+    def fake_read_sql(query, engine):
+        return expected_df
 
-    # Substitui temporariamente pd.read_sql
-    # pela nossa função falsa.
-    with patch(
-        "info_sales_mysql_api.database.query.load_sales.pd.read_sql"
-    ) as mock_sql:
-        # Define o retorno da consulta simulada
-        mock_sql.return_value = dados_mock
+    # Substitui temporariamente o pandas.read_sql.
+    monkeypatch.setattr(pd, "read_sql", fake_read_sql)
 
-        # Act (Execução)
+    # Engine fictícia (não será utilizada).
+    engine = object()
 
-        resultado = get_load_sales(engine_mock)
+    # Executa a função.
+    result = get_load_sales(engine)
 
-        # Assert (Verificação)
+    # Verifica se o DataFrame retornado é o esperado.
+    pd.testing.assert_frame_equal(result, expected_df)
 
-        # Verifica se retornou um DataFrame
-        assert isinstance(resultado, pd.DataFrame)
 
-        # Verifica se possui registros
-        assert len(resultado) == 1
+def test_get_load_sales_empty_dataframe(monkeypatch):
+    """
+    Verifica se ValueError é lançado quando
+    a consulta retorna um DataFrame vazio.
+    """
 
-        # Verifica se a coluna esperada existe
-        assert "nome_produto" in resultado.columns
+    # Simula retorno vazio da consulta.
+    empty_df = pd.DataFrame()
+
+    def fake_read_sql(query, engine):
+        return empty_df
+
+    monkeypatch.setattr(pd, "read_sql", fake_read_sql)
+
+    engine = object()
+
+    # Verifica se a exceção correta é lançada.
+    with pytest.raises(ValueError, match="Nenhum registro encontrado"):
+        get_load_sales(engine)
+
+
+def test_get_load_sales_sqlalchemy_error(monkeypatch):
+    """
+    Verifica se SQLAlchemyError é propagado
+    quando ocorre erro durante a consulta SQL.
+    """
+
+    # Simula erro do SQLAlchemy.
+    def fake_read_sql(query, engine):
+        raise SQLAlchemyError("Erro de conexão")
+
+    monkeypatch.setattr(pd, "read_sql", fake_read_sql)
+
+    engine = object()
+
+    # Verifica se a exceção é propagada.
+    with pytest.raises(SQLAlchemyError):
+        get_load_sales(engine)
+
+
+def test_get_load_sales_unexpected_error(monkeypatch):
+    """
+    Verifica se erros inesperados são propagados
+    pela função.
+    """
+
+    # Simula erro inesperado.
+    def fake_read_sql(query, engine):
+        raise RuntimeError("Erro inesperado")
+
+    monkeypatch.setattr(pd, "read_sql", fake_read_sql)
+
+    engine = object()
+
+    # Verifica se a exceção é propagada.
+    with pytest.raises(RuntimeError):
+        get_load_sales(engine)
