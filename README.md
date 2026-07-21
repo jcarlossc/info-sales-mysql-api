@@ -2,6 +2,8 @@
 
 # 📊 Info Sales MySQL API
 
+<img src="https://github.com/jcarlossc/info-sales-mysql-api/blob/main/images/ca386977-a347-4b7f-9b76-6d66e9918efa.png">
+
 ### Pipeline Analítico de Vendas  
 
 Info Sales MySQL API é uma API desenvolvida em Python utilizando FastAPI, responsável por consumir dados de um banco MySQL, realizar tratamento, 
