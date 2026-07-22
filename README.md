@@ -117,6 +117,48 @@ info_sales_mysql_api/
 
 ```
 
+## ⚙ Tecnologias utilizadas
+| Tecnologia | Descrição |
+| ---------- | --------- |
+| Python | Linguagem de programação |
+| Pytest | Biblioteca de testes |
+| Pandas | Biblioteca para Análise de Dados |
+| Pymysql | Biblioteca cliente que permite conectar aplicações Python a bancos de dados MySQL ou MariaDB |
+| Sqlalchemy | Biblioteca que atua como um kit de ferramentas SQL e um Mapeador Objeto-Relacional (ORM) |
+| pydantic-settings | Biblioteca pasa configurações de aplicativos a partir de variáveis de ambiente |
+| pyyaml | Biblioteca usada para analisar (ler), modificar e emitir (escrever) dados no formato YAML |
+| fastapi  | Framework web moderno para a criação de APIs em Pytho |
+| mypy | Ferramenta de análise estática |
+| ruff | Ferramenta de análise estática e formatação |
+| pytest-cov | Ferramenta de cobertura de testes |
+| taskipy | Ferramenta que permite criar atalhos curtos e automatizar comandos longos ou repetitivos |
+| pre-commit |  Mecanismo de automação que executa scripts e verificações no código-fonte antes de um commit |
+| uvicorn | Servidor web ASG |
+| httpx | Biblioteca para Python 3 usada para realizar requisições de rede |
+| MySQL | Sistema de banco de dados tabular |
+| XAMPP | Stack de softwares |
+| Apache | Servidor |
+| VSCode | Editor de código |
+
+
+## Observabilidade
+O projeto possui logging estruturado com rastreamento completo da execução.
+Exemplo de logs:
+```
+2026-07-21 17:36:57,602 - INFO - root - Logger configurado com sucesso.
+2026-07-21 17:37:33,435 - INFO - info_sales_mysql_api.api.dependencies.api_key - Iniciando validação da chave de API.
+2026-07-21 17:37:33,467 - INFO - info_sales_mysql_api.api.dependencies.api_key - API Key validada com sucesso.
+2026-07-21 17:37:33,470 - INFO - info_sales_mysql_api.api.routes.summary_router - Recebida requisição GET /summary
+2026-07-21 17:37:33,484 - INFO - info_sales_mysql_api.pipeline.pipeline_service - ### Iniciando pipeline de vendas. ###
+2026-07-21 17:37:33,484 - INFO - info_sales_mysql_api.pipeline.pipeline_service - Criando conexão com banco.
+2026-07-21 17:37:33,484 - INFO - info_sales_mysql_api.database.connection.get_connection - Iniciando criação da engine.
+2026-07-21 17:37:34,073 - INFO - info_sales_mysql_api.database.connection.get_connection - Engine criada com sucesso.
+2026-07-21 17:37:34,075 - INFO - info_sales_mysql_api.pipeline.pipeline_service - Carregando vendas.
+2026-07-21 17:37:34,076 - INFO - info_sales_mysql_api.database.query.load_sales - Iniciando carregamento dos dados de vendas.
+2026-07-21 17:37:35,882 - INFO - info_sales_mysql_api.database.query.load_sales - 2369 registros carregados.
+
+```
+
 ## Mode de Utilização
 
 1. Execute o XAMPP
@@ -128,25 +170,25 @@ info_sales_mysql_api/
 * Clique na aba importar e em escolher arquivo: o script está na raiz do projeto: ```script_sql/loja_info_plus.sql```, após isso, clique em importar no final da página
 * A configuração do Banco de Dados está no ```.env.example```
 
-3. Com a linguagem Python instalada: <a href="https://www.python.org/downloads/" target="_blank">https://www.python.org/downloads/</a>
-4. Instale o pipx: 
+2. Com a linguagem Python instalada: <a href="https://www.python.org/downloads/" target="_blank">https://www.python.org/downloads/</a>
+3. Instale o pipx: 
 ```
 pip install pipx
 ```
-5. Em seguida:
+4. Em seguida:
 ```
 pipx ensurepath
 ```
-6. E, por fim, o gerenciador Poetry:
+5. E, por fim, o gerenciador Poetry:
 ```
 pipx install poetry
 ```
-7. Clone o repositório e acesse o diretório
+6. Clone o repositório e acesse o diretório
 ```
 git clone https://github.com/jcarlossc/info-sales-mysql-api.git
 cd info-sales-mysql-api
 ```
-8. Instalação das dependências:
+7. Instalação das dependências:
 ```
 poetry install
 ```
