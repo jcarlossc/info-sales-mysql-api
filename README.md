@@ -2,7 +2,7 @@
 
 # 📊 Info Sales MySQL API
 
-<img src="https://github.com/jcarlossc/info-sales-mysql-api/blob/main/images/ca386977-a347-4b7f-9b76-6d66e9918efa.png">
+<img src="https://github.com/jcarlossc/info-sales-mysql-api/blob/main/images/capa.png">
 
 ### Pipeline Analítico de Vendas
 
@@ -18,6 +18,19 @@ produção utilizado em empresas de tecnologia.
 <img src="https://img.shields.io/badge/TESTS-pytest-orange?style=for-the-badge" />
 
 </div>
+
+![Poetry](https://img.shields.io/badge/Poetry-1.8+-60A5FA?style=for-the-badge&logo=poetry)
+![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi)
+![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
+![SQLAlchemy](https://img.shields.io/badge/SQLAlchemy-D71F00?style=for-the-badge)
+![Pandas](https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas)
+![Ruff](https://img.shields.io/badge/Ruff-D7FF64?style=for-the-badge)
+![MyPy](https://img.shields.io/badge/MyPy-2A6DB2?style=for-the-badge)
+![GitHub Actions](https://img.shields.io/badge/GitHub-Actions-2088FF?style=for-the-badge&logo=github-actions)
+![Release Please](https://img.shields.io/badge/Release-Please-4285F4?style=for-the-badge)
+![Pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?style=for-the-badge&logo=pre-commit)
+![Typed](https://img.shields.io/badge/Typing-MyPy-blue?style=for-the-badge)
+![Code Style](https://img.shields.io/badge/code%20style-ruff-black?style=for-the-badge)
 
 ---
 
@@ -53,6 +66,39 @@ produção utilizado em empresas de tecnologia.
                        ▼
                    JSON API
 ```
+
+## ✨ Funcionalidades
+### Banco de Dados
+* Conexão MySQL utilizando SQLAlchemy
+* Retry automático para conexão
+* Configuração via .env
+* Queries organizadas
+### Arquitetura modular
+* Separação de responsabilidades
+* Type Hints
+* Docstrings
+* Logging estruturado
+* Tratamento de exceções
+* Código aderente ao PEP 8
+### Validação de Dados
+* Validação de colunas obrigatórias
+* Validação de tipos
+* Validação de valores nulos
+* Tratamento de inconsistências
+* Mensagens de erro descritivas
+### KPIs Disponíveis
+* Faturamento
+* Ticket Médio
+* Total de Vendas
+* Quantidade de Clientes
+* Produtos Vendidos
+* Receita por Categoria
+* Receita por Estado
+* Receita por Cidade
+* Receita por Vendedor
+* Margem de Lucro
+* Desconto Médio
+* Crescimento das Vendas
 
 ## 📁 Estrutura do Projeto
 
@@ -132,6 +178,7 @@ info_sales_mysql_api/
 | ruff | Ferramenta de análise estática e formatação |
 | pytest-cov | Ferramenta de cobertura de testes |
 | taskipy | Ferramenta que permite criar atalhos curtos e automatizar comandos longos ou repetitivos |
+| release-please | Versionamento semântico |
 | pre-commit |  Mecanismo de automação que executa scripts e verificações no código-fonte antes de um commit |
 | uvicorn | Servidor web ASG |
 | httpx | Biblioteca para Python 3 usada para realizar requisições de rede |
@@ -140,8 +187,36 @@ info_sales_mysql_api/
 | Apache | Servidor |
 | VSCode | Editor de código |
 
+## 🚀 Integração Contínua
 
-## Observabilidade
+Toda alteração enviada ao GitHub executa automaticamente:
+
+* Instalação das dependências
+* Ruff
+* Formatação
+* MyPy
+* Pytest
+* Cobertura
+
+## 📦 Versionamento Automático
+
+O projeto utiliza Release Please.
+
+Exemplo:
+
+* feat!: 
+* feat: 
+* fix: 
+
+Cada release gera automaticamente:
+
+* Tag Git
+* Changelog
+* Nova versão semântica
+* Release no GitHub
+
+
+## ⚙️ Observabilidade
 O projeto possui logging estruturado com rastreamento completo da execução.
 Exemplo de logs:
 ```
@@ -155,11 +230,45 @@ Exemplo de logs:
 2026-07-21 17:37:34,073 - INFO - info_sales_mysql_api.database.connection.get_connection - Engine criada com sucesso.
 2026-07-21 17:37:34,075 - INFO - info_sales_mysql_api.pipeline.pipeline_service - Carregando vendas.
 2026-07-21 17:37:34,076 - INFO - info_sales_mysql_api.database.query.load_sales - Iniciando carregamento dos dados de vendas.
-2026-07-21 17:37:35,882 - INFO - info_sales_mysql_api.database.query.load_sales - 2369 registros carregados.
-
+...
 ```
 
-## Mode de Utilização
+## ✔ Qualidade de Código
+
+O projeto utiliza:
+
+* Ruff<br>
+```
+poetry run task lint
+```
+* Ruff Format<br>
+```
+poetry run task format
+```
+* MyPy<br>
+```
+poetry run task mypy
+```
+* Pytest<br>
+```
+poetry run task pytest
+```
+* Pre-commit<br>
+```
+poetry run task precommit
+```
+* Coverage html<br>
+```
+poetry run task covhtml
+```
+* Coverage CMD<br>
+```
+poetry run task covcmd
+```
+
+Executar:
+
+## 🛠️ Modo de Utilização
 
 1. Execute o XAMPP
 * Caso não o tenha, baixe-o: <a href="https://www.apachefriends.org/pt_br/download.html">https://www.apachefriends.org/pt_br/download.html</a>
@@ -197,7 +306,7 @@ poetry install
 poetry run task app
 ```
 
-## Licença
+## 📚 Licença
 Este projeto está licenciado sob MIT License.
 
 ## 🎯 Desenvolvedor focado em:
@@ -209,7 +318,7 @@ Este projeto está licenciado sob MIT License.
 - Automação de processos
 - Engenharia de Software
 
-## Contato
+## 📝 Contato
 * Autor: Carlos da Costa
 * Recife, PE - Brasil
 * Telefone: +55 81 99712 9140
