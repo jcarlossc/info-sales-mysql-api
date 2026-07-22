@@ -4,12 +4,12 @@
 
 <img src="https://github.com/jcarlossc/info-sales-mysql-api/blob/main/images/ca386977-a347-4b7f-9b76-6d66e9918efa.png">
 
-### Pipeline Analítico de Vendas  
+### Pipeline Analítico de Vendas
 
-Info Sales MySQL API é uma API desenvolvida em Python utilizando FastAPI, responsável por consumir dados de um banco MySQL, realizar tratamento, 
+Info Sales MySQL API é uma API desenvolvida em Python utilizando FastAPI, responsável por consumir dados de um banco MySQL, realizar tratamento,
 validação e análise das informações e disponibilizar indicadores de negócio (KPIs) através de endpoints REST.
 
-O projeto foi desenvolvido aplicando práticas modernas de Engenharia de Software, Arquitetura Limpa e Data Analytics, simulando um ambiente de 
+O projeto foi desenvolvido aplicando práticas modernas de Engenharia de Software, Arquitetura Limpa e Data Analytics, simulando um ambiente de
 produção utilizado em empresas de tecnologia.
 
 <img src="https://img.shields.io/badge/Python-276DC3?style=for-the-badge&logo=r&logoColor=white" />
@@ -24,7 +24,7 @@ produção utilizado em empresas de tecnologia.
 ## 🎯 Objetivos
 * Consumir dados de um banco MySQL
 * Validar dados antes do processamento
-* Tratar exceções 
+* Tratar exceções
 * Calcular KPIs de negócio
 * Disponibilizar métricas através de API REST
 * Garantir qualidade do código com testes automatizados
@@ -42,10 +42,10 @@ produção utilizado em empresas de tecnologia.
               Data Standardization
                        │
                        ▼
-                Data Cleanning 
+                Data Cleanning
                        │
                        ▼
-                 Business KPIs            
+                 Business KPIs
                        │
                        ▼
                FastAPI Endpoints
@@ -61,7 +61,7 @@ info_sales_mysql_api/
 ├───.github
 │   └───workflows
 │          ├───ci.yml
-│          └───release-please.yml                
+│          └───release-please.yml
 ├───config
 │     ├───db.yaml
 │     ├───logging.yaml
@@ -171,7 +171,7 @@ Exemplo de logs:
 * A configuração do Banco de Dados está no ```.env.example```
 
 2. Com a linguagem Python instalada: <a href="https://www.python.org/downloads/" target="_blank">https://www.python.org/downloads/</a>
-3. Instale o pipx: 
+3. Instale o pipx:
 ```
 pip install pipx
 ```

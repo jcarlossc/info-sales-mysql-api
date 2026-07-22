@@ -1,0 +1,219 @@
+{
+  "metadata": {
+    "rows": 2369,
+    "columns": 20,
+    "products": 200,
+    "sellers": 20,
+    "period": {
+      "start": "2024-01-01 00:00:00",
+      "end": "2025-12-31 00:00:00"
+    }
+  },
+  "kpis": {
+    "revenue": 7013183.35,
+    "profit": 1906953.74,
+    "orders": 2369,
+    "items_sold": 7024,
+    "average_ticket": 2960.4,
+    "average_discount": 5.02,
+    "margin": 27.19
+  },
+  "products": {
+    "top_revenue": {
+      "notebook modelo 19": 295038.33,
+      "notebook modelo 17": 224606.16,
+      "notebook modelo 20": 185823,
+      "notebook modelo 11": 169147.98,
+      "notebook modelo 16": 162463.93,
+      "notebook modelo 2": 160391.8,
+      "notebook modelo 7": 156566.3,
+      "notebook modelo 12": 155114.58,
+      "notebook modelo 1": 154218.26,
+      "notebook modelo 14": 128739.79
+    },
+    "top_quantity": {
+      "impressora modelo 17": 78,
+      "monitor modelo 19": 68,
+      "headset modelo 3": 64,
+      "headset modelo 12": 63,
+      "impressora modelo 9": 58,
+      "notebook modelo 19": 57,
+      "webcam modelo 2": 57,
+      "monitor modelo 16": 56,
+      "cadeira modelo 8": 56,
+      "teclado modelo 7": 56
+    },
+    "lowest_revenue": {
+      "mouse modelo 14": 575.3,
+      "mouse modelo 12": 919.42,
+      "mouse modelo 3": 1246.93,
+      "mouse modelo 11": 1494.94,
+      "mouse modelo 5": 1609.08,
+      "hub usb modelo 20": 1627.34,
+      "hub usb modelo 4": 1803.92,
+      "mouse modelo 2": 1964.63,
+      "teclado modelo 3": 2078.84,
+      "hub usb modelo 9": 2175.22
+    }
+  },
+  "categories": {
+    "revenue": {
+      "Notebook": 2513258.41,
+      "Monitor": 1111935.9,
+      "Impressora": 1040009.49,
+      "Cadeira": 943226.48,
+      "SSD": 408107.84,
+      "Headset": 403758.04,
+      "Webcam": 267059.87,
+      "Teclado": 134640.44,
+      "Mouse": 98870.11,
+      "Hub USB": 92316.77
+    },
+    "quantity": {
+      "Monitor": 749,
+      "SSD": 736,
+      "Impressora": 734,
+      "Teclado": 731,
+      "Cadeira": 721,
+      "Headset": 699,
+      "Hub USB": 690,
+      "Mouse": 685,
+      "Webcam": 653,
+      "Notebook": 626
+    }
+  },
+  "sellers": {
+    "revenue": {
+      "vanessa freitas": 431891.94,
+      "gabriel martins": 417942.26,
+      "patrícia melo": 417153.98,
+      "lucas ferreira": 413363.46,
+      "natália campos": 406997.6,
+      "rafael araujo": 406574.18,
+      "fernanda rocha": 393624.81,
+      "otávio nunes": 374838.62,
+      "helena ribeiro": 358247.4,
+      "eduardo costa": 356441.27,
+      "sandra teixeira": 353841.63,
+      "karen duarte": 333855.23,
+      "bruno lima": 331542.05,
+      "juliana barros": 325497.77,
+      "diego alves": 305899.62,
+      "marcos silva": 295940.1,
+      "thiago pinto": 288021.47,
+      "igor gomes": 278016.44,
+      "ana souza": 270928.36,
+      "carla mendes": 252565.16
+    },
+    "orders": {
+      "rafael araujo": 147,
+      "gabriel martins": 137,
+      "otávio nunes": 132,
+      "patrícia melo": 131,
+      "ana souza": 125,
+      "sandra teixeira": 123,
+      "eduardo costa": 123,
+      "natália campos": 123,
+      "lucas ferreira": 119,
+      "diego alves": 119,
+      "fernanda rocha": 118,
+      "karen duarte": 114,
+      "helena ribeiro": 113,
+      "vanessa freitas": 113,
+      "bruno lima": 109,
+      "juliana barros": 108,
+      "igor gomes": 107,
+      "carla mendes": 106,
+      "marcos silva": 103,
+      "thiago pinto": 99
+    },
+    "profit": {
+      "gabriel martins": 114662.68,
+      "lucas ferreira": 111585.08,
+      "vanessa freitas": 111148.93,
+      "patrícia melo": 110473.23,
+      "otávio nunes": 110019.16,
+      "natália campos": 109409.42,
+      "rafael araujo": 108702.53,
+      "fernanda rocha": 108520.55,
+      "eduardo costa": 98711.38,
+      "sandra teixeira": 97879.3,
+      "karen duarte": 96593.72,
+      "helena ribeiro": 95147.45,
+      "marcos silva": 87916.99,
+      "bruno lima": 85615.35,
+      "juliana barros": 84556.01,
+      "diego alves": 81355.74,
+      "thiago pinto": 77232.86,
+      "igor gomes": 75111.4,
+      "ana souza": 73875.68,
+      "carla mendes": 68436.28
+    }
+  },
+  "geography": {
+    "states": {
+      "rs": 1055797.96,
+      "sp": 945151.01,
+      "ce": 919593.08,
+      "ba": 919023.95,
+      "mg": 895787.77,
+      "rj": 788282.89,
+      "pr": 753641.28,
+      "pe": 735905.41
+    },
+    "cities": {
+      "porto alegre": 1055797.96,
+      "são paulo": 945151.01,
+      "fortaleza": 919593.08,
+      "salvador": 919023.95,
+      "belo horizonte": 895787.77,
+      "rio de janeiro": 788282.89,
+      "curitiba": 753641.28,
+      "recife": 735905.41
+    }
+  },
+  "time": {
+    "year": {
+      "2024": 3644844.71,
+      "2025": 3368338.64
+    },
+    "month": {
+      "April": 564172.41,
+      "August": 484491.96,
+      "December": 1036971.98,
+      "February": 312971,
+      "January": 434959.34,
+      "July": 454700.37,
+      "June": 543741.82,
+      "March": 540760.11,
+      "May": 458785.8,
+      "November": 890753.46,
+      "October": 713794.1,
+      "September": 577081
+    },
+    "weekday": {
+      "Friday": 841728.2,
+      "Monday": 1103874.75,
+      "Saturday": 803792.25,
+      "Sunday": 1155387.46,
+      "Thursday": 1076899.11,
+      "Tuesday": 1075450,
+      "Wednesday": 956051.58
+    }
+  },
+  "payments": {
+    "methods": {
+      "cartão de crédito": 1961239.33,
+      "cartão de débito": 1769258.5,
+      "boleto": 1762698.89,
+      "pix": 1519986.63
+    }
+  },
+  "status": {
+    "orders": {
+      "concluída": 2244,
+      "devolvida": 83,
+      "cancelada": 42
+    }
+  }
+}
