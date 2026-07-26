@@ -34,6 +34,17 @@ produção utilizado em empresas de tecnologia.
 
 ---
 
+## Imagens do Projeto
+<table>
+  <tr>
+    <td><img src="https://github.com/jcarlossc/info-sales-mysql-api/blob/main/images/swagger.gif" alt="Imagem Relatório" width="200"/></td>
+    <td><a href="https://github.com/jcarlossc/info-sales-mysql-api/blob/main/images/response_1784729649227.json"><img src="https://github.com/jcarlossc/info-sales-mysql-api/blob/main/images/json.png" width="200"/></a></td>
+    <td><img src="https://github.com/jcarlossc/info-sales-mysql-api/blob/main/images/cobertura_testes.png" alt="Imagem Relatório" width="200"/></td>
+    <td><img src="https://github.com/jcarlossc/info-sales-mysql-api/blob/main/images/precommit.png" alt="Imagem Relatório" width="200"/></td>
+    <td><img src="https://github.com/jcarlossc/info-sales-mysql-api/blob/main/images/pytest.png" alt="Imagem Relatório" width="200"/></td>
+  </tr>
+</table>
+
 ## 🎯 Objetivos
 * Consumir dados de um banco MySQL
 * Validar dados antes do processamento
