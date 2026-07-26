@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.0.0](https://github.com/jcarlossc/info-sales-mysql-api/compare/v0.11.4...v1.0.0) (2026-07-26)
+
+
+### ⚠ BREAKING CHANGES
+
+* Arquivo pyproject modificado
+
+### Features
+
+* Arquivo pyproject modificado ([01ae8ad](https://github.com/jcarlossc/info-sales-mysql-api/commit/01ae8ad2889cb6667fbc5799351c5f06d47c7000))
+
 ## [0.11.4](https://github.com/jcarlossc/info-sales-mysql-api/compare/v0.11.3...v0.11.4) (2026-07-21)
 
 
