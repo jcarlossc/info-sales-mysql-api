@@ -162,6 +162,21 @@ info_sales_mysql_api/
 │       │            └───load_retry.py
 │       └───main.py
 ├───tests
+│     ├───test_api_key.py
+│     ├───test_data_clean.py
+│     ├───test_get_engine.py
+│     ├───test_get_load_sales.py
+│     ├───test_get_summary.py
+│     ├───test_load_all_configs.py
+│     ├───test_load_retry.py
+│     ├───test_main.py
+│     ├───test_retry_connect.py
+│     ├───test_run_pipeline.py
+│     ├───test_schema_summary.py
+│     ├───test_settings.py
+│     ├───test_setup_logger.py
+│     ├───test_standardization_sales_data.py
+│     └───test_summary_router.py
 ├───.coverage
 ├───.env
 ├───.env.example
@@ -287,8 +302,9 @@ Executar:
 * Execute o Painel de Controle
 * Acione o Apache e o MySQL/MariaDB
 * Ao lado do botão start/stop do MySQL/MariaDB, clique em Admin. Isso irá abrir a interface do MySQL/MariaDB no navegador
-* Clique na aba importar e em escolher arquivo: o script está na raiz do projeto: ```script_sql/loja_info_plus.sql```, após isso, clique em importar no final da página
+* Clique na aba importar e em escolher arquivo: o script está na raiz do projeto: ```script_db/loja_info_plus.sql```, após isso, clique em importar no final da página
 * A configuração do Banco de Dados está no ```.env.example```
+* Observação: banco de dados simulado
 
 2. Com a linguagem Python instalada: <a href="https://www.python.org/downloads/" target="_blank">https://www.python.org/downloads/</a>
 3. Instale o pipx:
